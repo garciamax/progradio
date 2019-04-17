@@ -9,7 +9,7 @@ export const get = async () => {
         config: { headers: {'Content-Type': 'multipart/form-data' }},
     });
     const {artist, title, timetoplay} = tracks[0];
-    const nextUpdate = parseInt(timetoplay)*1000;
+    const nextUpdate = (parseInt(timetoplay) + 2 ) * 1000; //taking extra 2 secs
 
     return {artist, title, album:null, nextUpdate}
 };
