@@ -1,5 +1,4 @@
 const axios = require('axios');
-import {getArtwork} from "./itunes";
 
 export default type => {
     return async () => {
