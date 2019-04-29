@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 export const get = async () => {
-    const {data} = await axios('http://198.255.34.130:8512/7.html');
+    const {data} = await axios('http://23.237.150.98:8512/7.html');
     const content = data.match(/<body>(.*)<\/body>/)[1];
     const parts = content.split(',');
     if (parts.length < 7 || !parts[6]) {

@@ -1,5 +1,15 @@
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
+const { ipcMain } = require('electron');
+const getLyrics = require('./get-lyrics');
+
+ipcMain.on('getLyrics', (event, arg) => {
+    const {title, artist} = JSON.parse(arg);
+    getLyrics(`${title} ${artist}`).then(lyrics => {
+        event.sender.send('lyrics', lyrics)
+    }).catch(e => console.log(e))
+})
+
 if(process.env.ELECTRON_ENV === 'development'){
     app.commandLine.appendSwitch('remote-debugging-port', '9222');
 }
